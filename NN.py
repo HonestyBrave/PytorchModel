@@ -136,7 +136,7 @@ def train(model, criterion, optimizer, scheduler, batch_size=4,num_workers=4,num
     # load best model weights
     model.load_state_dict(best_model_wts)
     save_model_path = os.path.join(save_model_path,"model.pth")
-    torch.save(model.load_state_dict,save_model_path)
+    torch.save(model.state_dict(),save_model_path)
     # return model
 
 def fineTune(nc,pretrained):
@@ -176,7 +176,7 @@ if __name__ == "__main__":
     parser.add_argument("--scheduler",type=float,default=0.1,help="set scheduler to learn")
     parser.add_argument("--batch_size",type=int,default=4,help="once training picture number")
     parser.add_argument("--num_workers", type=int, default=4, help="worker load numbers")
-    parser.add_argument("--num_epochs", type=int, default=25, help="training numbers")
+    parser.add_argument("--num_epochs", type=int, default=10, help="training numbers")
     parser.add_argument("--data_dir", type=str, default=r"D:\data\hymenoptera_data", help=r"data dir")
     parser.add_argument("--save_model_path", type=str, default=r"D:\data\hymenoptera_data", help="training dataset path")
 
